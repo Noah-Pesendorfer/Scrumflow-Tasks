@@ -39,16 +39,36 @@ const doneList = document.querySelector('.Done-List');
 const projectTitle = document.querySelector('.project-title');
 
 // Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
-todoList.addEventListener('dragover', handleDragOver);
-todoList.addEventListener('drop', handleDrop.bind(null, 'To-Do'));
+todoList.addEventListener('dragover', dragover);
+todoList.addEventListener('drop', event => dragstart(event));
 
-inprogressList.addEventListener('dragover', handleDragOver);
-inprogressList.addEventListener('drop', handleDrop.bind(null, 'In Progress'));
+inprogressList.addEventListener('dragover', dragover);
+inprogressList.addEventListener('drop', event => dragstart(event));
 
 
-doneList.addEventListener('dragover', handleDragOver);
-doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
+doneList.addEventListener('dragover', dragover);
+doneList.addEventListener('drop', event => dragstart(event));
 
+function dragover(evt) {
+    evt.preventDefault();
+    evt.dataTransfer.dropEffect = "move";
+}
+
+function dragLeave(evt) {} // available if required
+function dragEnd(evt) {} // available if required
+
+function dragstart(evt) {
+    evt.dataTransfer.setData("text/plain", evt.target.id);
+    evt.dataTransfer.effectAllowed = "move";
+
+    console.log(evt.target.id)
+}
+
+function drop(evt) {
+    evt.preventDefault();
+    var data = evt.dataTransfer.getData("text");
+    evt.target.closest('.scrum-board-column').appendChild(document.getElementById(data));
+}
 
 function handleDragOver(event) {
     event.preventDefault();
