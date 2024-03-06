@@ -31,6 +31,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const currentProject = "NX1cH7RBU17dK2GZJs0G";
 let tasks = [];
+let taskId;
 
 const todoList = document.querySelector('.To-Do-List');
 const inprogressList = document.querySelector('.In-Progress-List');
@@ -52,12 +53,12 @@ doneList.addEventListener('drop', event=> handleDrop('In Progress', event));
 
 function handleDragOver(event) {
     event.preventDefault();
+    taskId = event.target.id;
 }
 
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
 function handleDrop(status, event) {
     event.preventDefault();
-    const taskId = event.target.id;
     console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
 
