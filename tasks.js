@@ -158,7 +158,7 @@ function loadTasksIntoHTML() {
 function loadToDoTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a id=" ' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -185,7 +185,7 @@ function loadToDoTask(task) {
 function loadProgressTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a id=" ' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -212,7 +212,7 @@ function loadProgressTask(task) {
 function loadDoneTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -240,7 +240,7 @@ function loadDoneTask(task) {
 function addNewTask() {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#">\n' +
+    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">Add discount code to\n' +
         '                                        checkout page</p>\n' +
