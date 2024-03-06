@@ -52,12 +52,13 @@ doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
 
 function handleDragOver(event) {
     event.preventDefault();
+    event.dataTransfer.setData("Text", event.target.id);
 }
 
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
 function handleDrop(status, event) {
     event.preventDefault();
-    const taskId = event.target.id;
+    const taskId = event.dataTransfer.getData("Text");
     console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
 
