@@ -57,8 +57,7 @@ function handleDragOver(event) {
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
 function handleDrop(status, event) {
     event.preventDefault();
-    event.dataTransfer.setData("Text", event.target.id);
-    const taskId = event.dataTransfer.getData("Text");
+    const taskId = event.target.id;
     console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
 
