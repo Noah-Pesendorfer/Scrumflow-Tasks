@@ -38,6 +38,41 @@ const doneList = document.querySelector('.Done-List');
 
 const projectTitle = document.querySelector('.project-title');
 
+// Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
+todoList.addEventListener('dragover', handleDragOver);
+todoList.addEventListener('drop', handleDrop.bind(null, 'To-Do'));
+
+inprogressList.addEventListener('dragover', handleDragOver);
+inprogressList.addEventListener('drop', handleDrop.bind(null, 'In Progress'));
+
+doneList.addEventListener('dragover', handleDragOver);
+doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
+
+
+function handleDragOver(event) {
+    event.preventDefault();
+}
+
+// Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
+function handleDrop(status, event) {
+    event.preventDefault();
+    const taskId = event.dataTransfer.getData('text/plain');
+    const taskElement = document.getElementById(taskId);
+
+    // Aktualisiere den Status des Tasks entsprechend der Ziel-Liste
+    //updateTaskStatus(taskId, status);
+    console.log(taskId, status);
+
+    // Verschiebe das Task-Element in die Ziel-Liste
+    event.target.appendChild(taskElement);
+}
+
+// Funktion, um den Status eines Tasks in der Datenbank zu aktualisieren
+async function updateTaskStatus(taskId, status) {
+    const taskRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", taskId);
+    await updateDoc(taskRef, { status: status });
+}
+
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
