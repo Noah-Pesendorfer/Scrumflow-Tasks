@@ -57,7 +57,7 @@ inprogressList.addEventListener('drop', e => {
     console.log(taskId, "In Progress");
 
     // Verschiebe das Task-Element in die Ziel-Liste
-    event.target.appendChild(taskElement);
+    e.target.appendChild(taskElement);
 });
 
 
