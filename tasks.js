@@ -53,6 +53,7 @@ doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
 function handleDragOver(event) {
     event.preventDefault();
     event.dataTransfer.setData("Text", event.target.id);
+    console.log("Target ID: ", event.target.id);
 }
 
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
