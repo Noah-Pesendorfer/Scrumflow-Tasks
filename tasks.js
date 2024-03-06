@@ -134,11 +134,11 @@ function loadToDoTask(task) {
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <time class="text-sm" datetime="2019-09-14">Sep 14</time>\n' +
         '                                    <div class="mt-2">\n' +
-        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-teal-100 rounded">\n' +
-        '                                                    <svg class="h-2 w-2 text-teal-500" viewbox="0 0 8 8" fill="#000000">\n' +
+        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-[#74a3ed] rounded">\n' +
+        '                                                    <svg class="h-2 w-2 text-[#4482e3]" viewbox="0 0 8 8" fill="#000000">\n' +
         '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
         '                                                    </svg>\n' +
-        '                                                    <span class="ml-2 text-teal-900 font-medium text-sm ">To-Do</span>\n' +
+        '                                                    <span class="ml-2 text-[#095de0] font-medium text-sm ">To-Do</span>\n' +
         '                                                </span>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
@@ -160,11 +160,11 @@ function loadProgressTask(task) {
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <div>' + task.description + '</div>' +
         '                                    <div class="mt-2">\n' +
-        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-orange-300 rounded">\n' +
-        '                                                    <svg class="h-2 w-2 text-orange-500" viewbox="0 0 8 8" fill="#000000">\n' +
+        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-[#e8d46d] rounded">\n' +
+        '                                                    <svg class="h-2 w-2 text-[#e3c83b]" viewbox="0 0 8 8" fill="#000000">\n' +
         '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
         '                                                    </svg>\n' +
-        '                                                    <span class="ml-2 text-orange-900 font-medium text-sm ">In Progress</span>\n' +
+        '                                                    <span class="ml-2 text-[#9c8303] font-medium text-sm ">In Progress</span>\n' +
         '                                                </span>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
@@ -186,11 +186,11 @@ function loadDoneTask(task) {
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <time class="text-sm" datetime="2019-09-14">Sep 14</time>\n' +
         '                                    <div class="mt-2">\n' +
-        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-rose-300 rounded">\n' +
-        '                                                    <svg class="h-2 w-2 text-rose-500" viewbox="0 0 8 8" fill="#000000">\n' +
+        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-teal-100 rounded">\n' +
+        '                                                    <svg class="h-2 w-2 text-teal-500" viewbox="0 0 8 8" fill="#000000">\n' +
         '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
         '                                                    </svg>\n' +
-        '                                                    <span class="ml-2 text-rose-900 font-medium text-sm ">In Progress</span>\n' +
+        '                                                    <span class="ml-2 text-teal-900 font-medium text-sm ">Done</span>\n' +
         '                                                </span>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
