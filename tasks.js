@@ -103,6 +103,11 @@ function loadTasksOfProject() {
 
 function loadTasksIntoHTML() {
     tasks.forEach(task => {
+
+        if(!task.description){
+            task.description = "";
+        }
+
         if(!task.status || task.status === "To-Do"){
             loadToDoTask(task);
         }
@@ -185,7 +190,7 @@ function loadDoneTask(task) {
         '                                                    <svg class="h-2 w-2 text-rose-500" viewbox="0 0 8 8" fill="#000000">\n' +
         '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
         '                                                    </svg>\n' +
-        '                                                    <span class="ml-2 text-rose-900 font-medium text-sm ">Feature Request</span>\n' +
+        '                                                    <span class="ml-2 text-rose-900 font-medium text-sm ">In Progress</span>\n' +
         '                                                </span>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
@@ -213,7 +218,7 @@ function addNewTask() {
         '                                                    <svg class="h-2 w-2 text-teal-500" viewbox="0 0 8 8" fill="#000000">\n' +
         '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
         '                                                    </svg>\n' +
-        '                                                    <span class="ml-2 text-teal-900 font-medium text-sm ">Feature Request</span>\n' +
+        '                                                    <span class="ml-2 text-teal-900 font-medium text-sm ">Done</span>\n' +
         '                                                </span>\n' +
         '                                    </div>\n' +
         '                                </div>\n' +
