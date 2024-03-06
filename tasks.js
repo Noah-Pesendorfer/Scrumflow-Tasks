@@ -30,6 +30,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 const currentProject = "NX1cH7RBU17dK2GZJs0G";
+let tasks = [];
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -63,6 +64,19 @@ function loadUserData() {
 function loadTasksOfProject() {
     const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks")
     getDocs(tasksRef)
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const taskData = doc.data();
+
+                const task = {id: doc.id, ...taskData};
+
+                tasks.push(task);
+            });
+            console.log("Tasks: ", tasks);
+        })
+        .catch(error => {
+            console.error("Error loading projects: ", error);
+        });
 }
 
 function addNewTask() {
