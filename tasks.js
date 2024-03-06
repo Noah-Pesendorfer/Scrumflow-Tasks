@@ -127,8 +127,9 @@ function loadToDoTask(task) {
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
-        '                                                    <img class="h-6 w-6 ml-4 rounded-full "\n' +
-        '                                                         src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=144&h=144&q=60">\n' +
+        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
+        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
+        '                                            </div>' +
         '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
@@ -153,8 +154,9 @@ function loadProgressTask(task) {
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
-        '                                                    <img class="h-6 w-6 ml-4 rounded-full "\n' +
-        '                                                         src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=144&h=144&q=60">\n' +
+        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
+        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
+        '                                            </div>' +
         '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
@@ -179,8 +181,9 @@ function loadDoneTask(task) {
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
-        '                                                    <img class="h-6 w-6 ml-4 rounded-full "\n' +
-        '                                                         src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=144&h=144&q=60">\n' +
+        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
+        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
+        '                                            </div>' +
         '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
