@@ -32,6 +32,11 @@ const auth = getAuth(app);
 const currentProject = "NX1cH7RBU17dK2GZJs0G";
 let tasks = [];
 
+const todoList = document.querySelector('.To-Do-List');
+const inprogressList = document.querySelector('.In-Progress-List');
+const doneList = document.querySelector('.Done-List');
+
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User logged in with ID: ", user.uid);
@@ -72,15 +77,48 @@ function loadTasksOfProject() {
 
                 tasks.push(task);
             });
-            console.log("Tasks: ", tasks);
+            loadTasksIntoHTML();
         })
         .catch(error => {
             console.error("Error loading projects: ", error);
         });
 }
 
+function loadTasksIntoHTML() {
+    tasks.forEach(task => {
+        if(!task.status || task.status === "To-Do"){
+            loadTask(task);
+        }
+    })
+}
+
+function loadTask(task) {
+    let newTask = document.createElement('li');
+    newTask.classList.add('mt-3');
+    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#">\n' +
+        '                                <div class="flex justify-between">\n' +
+        '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
+        '                                    <span>\n' +
+        '                                                    <img class="h-6 w-6 ml-4 rounded-full "\n' +
+        '                                                         src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=144&h=144&q=60">\n' +
+        '                                            </span>\n' +
+        '                                </div>\n' +
+        '                                <div class="flex justify-between items-baseline">\n' +
+        '                                    <time class="text-sm" datetime="2019-09-14">Sep 14</time>\n' +
+        '                                    <div class="mt-2">\n' +
+        '                                                <span class="px-2 py-1 leading-tight inline-flex items-center bg-teal-100 rounded">\n' +
+        '                                                    <svg class="h-2 w-2 text-teal-500" viewbox="0 0 8 8" fill="#000000">\n' +
+        '                                                        <circle cx=\'4\' cy=\'4\' r=\'3\'/>\n' +
+        '                                                    </svg>\n' +
+        '                                                    <span class="ml-2 text-teal-900 font-medium text-sm ">Feature Request</span>\n' +
+        '                                                </span>\n' +
+        '                                    </div>\n' +
+        '                                </div>\n' +
+        '                            </a>';
+    todoList.appendChild(newTask);
+}
+
 function addNewTask() {
-    const todolist = document.querySelector('.To-Do-List');
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
     newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#">\n' +
@@ -104,7 +142,7 @@ function addNewTask() {
         '                                    </div>\n' +
         '                                </div>\n' +
         '                            </a>';
-    todolist.appendChild(newTask);
+    todoList.appendChild(newTask);
 }
 
 
