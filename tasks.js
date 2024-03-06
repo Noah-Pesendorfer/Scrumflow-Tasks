@@ -57,7 +57,10 @@ function handleDragOver(event) {
 function handleDrop(status, event) {
     event.preventDefault();
     const taskId = event.dataTransfer.getData('text/plain');
+    console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
+
+    console.log("Task Element: ", taskElement);
 
     // Aktualisiere den Status des Tasks entsprechend der Ziel-Liste
     //updateTaskStatus(taskId, status);
