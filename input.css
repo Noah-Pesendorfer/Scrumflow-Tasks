@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer no-tailwindcss {
-    /* This layer is disabled */
-    @variants {
-        .no-tailwindcss {
-            all: unset;
-        }
-    }
-}
