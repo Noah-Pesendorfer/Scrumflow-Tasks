@@ -43,7 +43,23 @@ todoList.addEventListener('dragover', handleDragOver);
 todoList.addEventListener('drop', handleDrop.bind(null, 'To-Do'));
 
 inprogressList.addEventListener('dragover', handleDragOver);
-inprogressList.addEventListener('drop', handleDrop.bind(null, 'In Progress'));
+//inprogressList.addEventListener('drop', handleDrop.bind(null, 'In Progress'));
+inprogressList.addEventListener('drop', e => {
+    e.preventDefault();
+    const taskId = e.target.id;
+    console.log("Task ID: ", taskId);
+    const taskElement = document.getElementById(taskId);
+
+    console.log("Task Element: ", taskElement);
+
+    // Aktualisiere den Status des Tasks entsprechend der Ziel-Liste
+    //updateTaskStatus(taskId, status);
+    console.log(taskId, "In Progress");
+
+    // Verschiebe das Task-Element in die Ziel-Liste
+    event.target.appendChild(taskElement);
+});
+
 
 doneList.addEventListener('dragover', handleDragOver);
 doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
