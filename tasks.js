@@ -36,6 +36,8 @@ const todoList = document.querySelector('.To-Do-List');
 const inprogressList = document.querySelector('.In-Progress-List');
 const doneList = document.querySelector('.Done-List');
 
+const projectTitle = document.querySelector('.project-title');
+
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -46,7 +48,7 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-document.querySelector('.add-task').addEventListener('click', () => addNewTask())
+document.querySelector('.add-task').addEventListener('click', () => addNewTask());
 
 function loadUserData() {
     const userRef = doc(db, "users", auth.currentUser.uid)
@@ -56,6 +58,21 @@ function loadUserData() {
                 const UserData = docSnapshot.data();
 
                 document.querySelector('.username').innerHTML = UserData.name;
+
+            } else {
+                console.log("Token-Dokument existiert nicht");
+            }
+        })
+        .catch(error => {
+            console.error("Fehler beim Laden des Token-Dokuments oder beim Aufrufen von GPT3: ", error);
+        });
+    const projRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject)
+    getDoc(projRef)
+        .then(async docSnapshot => {
+            if (docSnapshot.exists()) {
+                const ProjectData = docSnapshot.data();
+
+                projectTitle.innerHTML = ProjectData.title;
                 loadTasksOfProject();
             } else {
                 console.log("Token-Dokument existiert nicht");
