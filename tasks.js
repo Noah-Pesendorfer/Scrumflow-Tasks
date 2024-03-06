@@ -185,7 +185,7 @@ function loadToDoTask(task) {
 function loadProgressTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a id=" ' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
