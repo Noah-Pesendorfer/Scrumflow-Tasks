@@ -39,29 +39,29 @@ const doneList = document.querySelector('.Done-List');
 const projectTitle = document.querySelector('.project-title');
 
 // Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
-todoList.addEventListener('dragover', event => handleDragOver(event));
-todoList.addEventListener('drop', event => handleDrop.bind(event, 'To Do'));
+todoList.addEventListener('dragover', handleDragOver);
+todoList.addEventListener('drop', event=> handleDrop('In Progress', event));
 
-inprogressList.addEventListener('dragover', event => handleDragOver(event));
-inprogressList.addEventListener('drop', event => handleDrop.bind(event, 'In Progress'));
+inprogressList.addEventListener('dragover', handleDragOver);
+inprogressList.addEventListener('drop', event=> handleDrop('In Progress', event));
 
 
-doneList.addEventListener('dragover', event => handleDragOver(event));
-doneList.addEventListener('drop', event => handleDrop.bind(event, 'Done'));
+doneList.addEventListener('dragover', handleDragOver);
+doneList.addEventListener('drop', event=> handleDrop('In Progress', event));
 
 
 function handleDragOver(event) {
     event.preventDefault();
     if(event.target.id){
-        //event.dataset.id = event.target.id;
-        console.log("Target ID: ", event.dataset.id);
+        event.dataTransfer.setData("Text", event.target.id);
+        console.log("Target ID: ", event.target.id);
     }
 }
 
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
-function handleDrop(event, status) {
+function handleDrop(status, event) {
     event.preventDefault();
-    const taskId = event.dataset.id;
+    const taskId = event.dataset.getId
     console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
 
