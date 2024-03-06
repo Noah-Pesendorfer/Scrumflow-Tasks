@@ -40,13 +40,13 @@ const projectTitle = document.querySelector('.project-title');
 
 // Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
 todoList.addEventListener('dragover', handleDragOver);
-todoList.addEventListener('drop', handleDrop.bind('To-Do', null));
+todoList.addEventListener('drop', handleDrop.bind(null, 'To-Do'));
 
 inprogressList.addEventListener('dragover', handleDragOver);
-inprogressList.addEventListener('drop', handleDrop.bind('In Progress', null));
+inprogressList.addEventListener('drop', handleDrop.bind(null, 'In Progress'));
 
 doneList.addEventListener('dragover', handleDragOver);
-doneList.addEventListener('drop', handleDrop.bind('Done', null));
+doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
 
 
 function handleDragOver(event) {
