@@ -53,15 +53,15 @@ doneList.addEventListener('drop', handleDrop.bind(null, 'Done'));
 function handleDragOver(event) {
     event.preventDefault();
     if(event.target.id){
-        event.dataTransfer.setData("Text", event.target.id);
-        console.log("Target ID: ", event.target.id);
+        event.dataset.id = event.target.id;
+        console.log("Target ID: ", event.dataset.id);
     }
 }
 
 // Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
 function handleDrop(status, event) {
     event.preventDefault();
-    const taskId = event.dataTransfer.getData("Text")
+    const taskId = event.dataset.id;
     console.log("Task ID: ", taskId);
     const taskElement = document.getElementById(taskId);
 
@@ -72,7 +72,7 @@ function handleDrop(status, event) {
     console.log(taskId, status);
 
     // Verschiebe das Task-Element in die Ziel-Liste
-    event.target.appendChild(taskElement);
+    doneList.appendChild(taskElement);
 }
 
 // Funktion, um den Status eines Tasks in der Datenbank zu aktualisieren
