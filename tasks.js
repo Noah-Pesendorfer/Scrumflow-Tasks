@@ -92,7 +92,7 @@ function loadTasksIntoHTML() {
         if(task.status === "In Progress"){
             loadProgressTask(task);
         }
-        else{
+        else if (task.status === "Done"){
             loadDoneTask(task);
         }
     })
