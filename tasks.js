@@ -51,7 +51,7 @@ function loadUserData() {
                 const UserData = docSnapshot.data();
 
                 document.querySelector('.username').innerHTML = UserData.name;
-
+                loadTasksOfProject();
             } else {
                 console.log("Token-Dokument existiert nicht");
             }
