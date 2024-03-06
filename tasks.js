@@ -53,7 +53,7 @@ doneList.addEventListener('drop', event => handleDrop.bind(event, 'Done'));
 function handleDragOver(event) {
     event.preventDefault();
     if(event.target.id){
-        event.dataset.id = event.target.id;
+        //event.dataset.id = event.target.id;
         console.log("Target ID: ", event.dataset.id);
     }
 }
