@@ -61,7 +61,8 @@ function loadUserData() {
 }
 
 function loadTasksOfProject() {
-    const projRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject)
+    const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks")
+    getDocs(tasksRef)
 }
 
 function addNewTask() {
