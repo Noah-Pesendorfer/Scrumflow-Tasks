@@ -155,6 +155,11 @@ function loadToDoTask(task) {
         '                                </div>\n' +
         '                            </a>';
     todoList.appendChild(newTask);
+
+    $(document).on('dragstart', '.drag-item', function(event) {
+        let itemId = $(this.parentNode).attr('id');
+        event.originalEvent.dataTransfer.setData("text/plain", itemId);
+    });
 }
 
 function loadProgressTask(task) {
@@ -183,6 +188,11 @@ function loadProgressTask(task) {
         '                                </div>\n' +
         '                            </a>';
     inprogressList.appendChild(newTask);
+
+    $(document).on('dragstart', '.drag-item', function(event) {
+        let itemId = $(this.parentNode).attr('id');
+        event.originalEvent.dataTransfer.setData("text/plain", itemId);
+    });
 }
 
 function loadDoneTask(task) {
@@ -211,23 +221,20 @@ function loadDoneTask(task) {
         '                                </div>\n' +
         '                            </a>';
     doneList.appendChild(newTask);
+
+    $(document).on('dragstart', '.drag-item', function(event) {
+        let itemId = $(this.parentNode).attr('id');
+        event.originalEvent.dataTransfer.setData("text/plain", itemId);
+    });
 }
 
-let itemId;
-
-$(document).on('dragstart', '.drag-item', function(event) {
-    itemId = $(this.parentNode).attr('id');
-    event.originalEvent.dataTransfer.setData("text/plain", itemId);
-});
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    tasks.find(task => task.id === draggedItemId).status = "To-Do"
-    loadToDoTask(task);
-    console.log("Drop: ", this);
-    console.log('Dropped! Dragged item ID:', draggedItemId);
+    loadTasksOfProject();
+    updateTaskStatus(task, "To-Do");
 });
 
 $('.drop-progress').on('drop', function(event) {
@@ -235,10 +242,8 @@ $('.drop-progress').on('drop', function(event) {
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    tasks.find(task => task.id === draggedItemId).status = "In Progress"
-    loadProgressTask(task);
-    console.log("Drop: ", this);
-    console.log('Dropped! Dragged item ID:', draggedItemId);
+    loadTasksOfProject();
+    updateTaskStatus(task, "In Progress");
 });
 
 $('.drop-done').on('drop', function(event) {
@@ -246,11 +251,22 @@ $('.drop-done').on('drop', function(event) {
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    tasks.find(task => task.id === draggedItemId).status = "Done";
-    loadDoneTask(task);
-    console.log("Drop: ", this);
-    console.log('Dropped! Dragged item ID:', draggedItemId);
+    loadTasksOfProject();
+    updateTaskStatus(task, "Done");
 });
+
+function updateTaskStatus(task, status){
+    tasks.find(task => task.id === task.id).status = status;
+
+    const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id);
+    updateDoc(tasksRef, task)
+        .then(() =>{
+            console.log("Updated task: ", task);
+        })
+        .catch(() => {
+            console.error("Error updating task");
+        })
+}
 
 $('.drop-todo').on('dragover', function(event) {
     event.preventDefault();
