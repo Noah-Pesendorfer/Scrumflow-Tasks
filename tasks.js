@@ -222,6 +222,7 @@ $(document).on('dragstart', '.drag-item', function(event) {
 $('.drop').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    getTask(draggedItemId);
     console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
@@ -230,6 +231,14 @@ $('.drop').on('dragover', function(event) {
     event.preventDefault();
 });
 
+function getTask(draggedItemId) {
+    const droppedTask = tasks.find(task => task.id === droppedItemId);
+    if (droppedTask) {
+        console.log("Dropped Task:", droppedTask);
+    } else {
+        console.log("Task not found in tasks array");
+    }
+}
 
 function addNewTask() {
     let newTask = document.createElement('li');
