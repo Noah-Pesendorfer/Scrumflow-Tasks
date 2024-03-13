@@ -211,7 +211,7 @@ function loadDoneTask(task) {
 }
 
 $('.drop').on('drop', function(event) {
-    console.log('Dropped!: ', event.target.title);
+    console.log('Dropped!: ', this);
 });
 
 $('.drop').on('dragover', function(event) {
