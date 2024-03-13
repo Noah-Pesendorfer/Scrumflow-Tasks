@@ -228,7 +228,6 @@ $('.drop-todo').on('drop', function(event) {
     let task = tasks.find(task => task.id === draggedItemId);
     updateTaskStatus(task, "To-Do");
     loadTasksOfProject();
-    window.location.reload();
 });
 
 $('.drop-progress').on('drop', function(event) {
@@ -238,7 +237,6 @@ $('.drop-progress').on('drop', function(event) {
     console.log("Dropped in In Progress");
     updateTaskStatus(task, "In Progress");
     loadTasksOfProject();
-    window.location.reload();
 });
 
 $('.drop-done').on('drop', function(event) {
@@ -248,7 +246,6 @@ $('.drop-done').on('drop', function(event) {
     console.log("Dropped in Done");
     updateTaskStatus(task, "Done");
     loadTasksOfProject();
-    window.location.reload();
 });
 
 function updateTaskStatus(task, status){
