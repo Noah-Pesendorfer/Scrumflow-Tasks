@@ -216,8 +216,8 @@ function loadDoneTask(task) {
 let itemId;
 
 $(document).on('dragstart', '.drag-item', function(event) {
-    itemId = $(this).attr('id');
-    console.log("Item ID: ", this.attributes.id);
+    itemId = $(this.parentNode).attr('id');
+    console.log("Item ID: ", this.parentNode.attributes.id);
     console.log("Item ID: ", itemId);
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
 });
