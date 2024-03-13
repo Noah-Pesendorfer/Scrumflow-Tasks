@@ -209,14 +209,12 @@ function loadDoneTask(task) {
         '                            </a>';
     doneList.appendChild(newTask);
 }
-let dragItem = document.querySelector('.drag-item');
-if(dragItem){
-    dragItem.addEventListener('dragstart', event => function(event) {
-        let itemId = $(this).attr('id');
-        console.log("Item ID: ", itemId);
-        event.originalEvent.dataTransfer.setData("text/plain", itemId);
-    })
-}
+
+$(document).on('dragstart', '.drag-item', function(event) {
+    let itemId = $(this).attr('id');
+    console.log("Item ID: ", itemId);
+    event.originalEvent.dataTransfer.setData("text/plain", itemId);
+});
 $('.drop').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
