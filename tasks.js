@@ -83,6 +83,10 @@ function loadUserData() {
 }
 
 function loadTasksOfProject() {
+    todoList.innerHTML="";
+    inprogressList.innerHTML="";
+    doneList.innerHTML="";
+
     const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks")
     getDocs(tasksRef)
         .then(querySnapshot => {
