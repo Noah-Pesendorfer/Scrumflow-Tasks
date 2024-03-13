@@ -248,7 +248,7 @@ $('.drop-done').on('drop', function(event) {
 function updateTaskStatus(task, status){
     tasks.find(task => task.id === task.id).status = status;
 
-    const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id);
+    const tasksRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id);
     updateDoc(tasksRef, task)
         .then(() =>{
             console.log("Updated task: ", task);
