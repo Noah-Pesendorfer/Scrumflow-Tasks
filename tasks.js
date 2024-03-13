@@ -132,7 +132,7 @@ function loadTasksIntoHTML() {
 function loadToDoTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a draggable="true" class="block p-5 rounded-lg shadow bg-white" href="#">\n' +
+    newTask.innerHTML = '<a draggable="true" class="block p-5 rounded-lg shadow bg-white drag-item" href="#">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -159,7 +159,7 @@ function loadToDoTask(task) {
 function loadProgressTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true">\n' +
+    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -186,7 +186,7 @@ function loadProgressTask(task) {
 function loadDoneTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true">\n' +
+    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -210,8 +210,14 @@ function loadDoneTask(task) {
     doneList.appendChild(newTask);
 }
 
+$('.drag-item').on('dragstart', function(event) {
+    let itemId = $(this).attr('id');
+    event.originalEvent.dataTransfer.setData("text/plain", itemId);
+});
 $('.drop').on('drop', function(event) {
-    console.log('Dropped!: ', this);
+    event.preventDefault();
+    let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    console.log('Dropped! Dragged item ID:', draggedItemId);
 });
 
 $('.drop').on('dragover', function(event) {
@@ -222,7 +228,7 @@ $('.drop').on('dragover', function(event) {
 function addNewTask() {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true">\n' +
+    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">Add discount code to\n' +
         '                                        checkout page</p>\n' +
