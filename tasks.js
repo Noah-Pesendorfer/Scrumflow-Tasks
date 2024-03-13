@@ -212,6 +212,7 @@ function loadDoneTask(task) {
 
 $('.drag-item').on('dragstart', function(event) {
     let itemId = $(this).attr('id');
+    console.log("Item ID: ", itemId);
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
 });
 $('.drop').on('drop', function(event) {
