@@ -210,16 +210,9 @@ function loadDoneTask(task) {
     doneList.appendChild(newTask);
 }
 
-$( function() {
-    $( "#draggable" ).draggable;
-    $( "#droppable" ).droppable({
-        drop: function( event, ui ) {
-            console.log(this);
-            $( this )
-                .find( "ul" );
-        }
-    });
-} );
+$('.drop').on('drop', function(event) {
+    console.log('Dropped!');
+});
 
 
 function addNewTask() {
