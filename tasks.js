@@ -86,7 +86,7 @@ function loadTasksOfProject() {
     todoList.innerHTML="";
     inprogressList.innerHTML="";
     doneList.innerHTML="";
-    tasks = "";
+    tasks = [];
 
     const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks")
     getDocs(tasksRef)
