@@ -210,11 +210,11 @@ function loadDoneTask(task) {
     doneList.appendChild(newTask);
 }
 
-$('.drag-item').on('dragstart', function(event) {
+document.querySelector('.drag-item').addEventListener('dragstart', event => function(event) {
     let itemId = $(this).attr('id');
     console.log("Item ID: ", itemId);
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
-});
+})
 $('.drop').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
