@@ -132,6 +132,7 @@ function loadTasksIntoHTML() {
 function loadToDoTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
+    newTask.id = task.id;
     newTask.innerHTML = '<a draggable="true" class="block p-5 rounded-lg shadow bg-white drag-item" href="#">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
@@ -159,6 +160,7 @@ function loadToDoTask(task) {
 function loadProgressTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
+    newTask.id = task.id;
     newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
@@ -186,6 +188,7 @@ function loadProgressTask(task) {
 function loadDoneTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
+    newTask.id = task.id;
     newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
@@ -210,9 +213,12 @@ function loadDoneTask(task) {
     doneList.appendChild(newTask);
 }
 
+let itemId;
+
 $(document).on('dragstart', '.drag-item', function(event) {
-    let itemId = $(this).attr('id');
-    console.log("Item ID: ", this.parentNode);
+    itemId = $(this).attr('id');
+    console.log("Item ID: ", this.attributes.id);
+    console.log("Item ID: ", itemId);
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
 });
 $('.drop').on('drop', function(event) {
