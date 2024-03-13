@@ -217,13 +217,12 @@ let itemId;
 
 $(document).on('dragstart', '.drag-item', function(event) {
     itemId = $(this.parentNode).attr('id');
-    console.log("Item ID: ", this.parentNode.attributes.id);
-    console.log("Item ID: ", itemId);
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
 });
 $('.drop').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
 
