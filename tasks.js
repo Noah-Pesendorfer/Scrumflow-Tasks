@@ -219,26 +219,47 @@ $(document).on('dragstart', '.drag-item', function(event) {
     itemId = $(this.parentNode).attr('id');
     event.originalEvent.dataTransfer.setData("text/plain", itemId);
 });
-$('.drop').on('drop', function(event) {
+$('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
-    getTask(draggedItemId);
+    let task = tasks.find(task => task.id === draggedItemId);
+    tasks.find(task => task.id === draggedItemId).status = "To-Do"
+    this.appendChild(task);
     console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
 
-$('.drop').on('dragover', function(event) {
+$('.drop-progress').on('drop', function(event) {
+    event.preventDefault();
+    let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    let task = tasks.find(task => task.id === draggedItemId);
+    tasks.find(task => task.id === draggedItemId).status = "In Progress"
+    this.appendChild(task);
+    console.log("Drop: ", this);
+    console.log('Dropped! Dragged item ID:', draggedItemId);
+});
+
+$('.drop-done').on('drop', function(event) {
+    event.preventDefault();
+    let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    let task = tasks.find(task => task.id === draggedItemId);
+    tasks.find(task => task.id === draggedItemId).status = "Done";
+    this.appendChild(task);
+    console.log("Drop: ", this);
+    console.log('Dropped! Dragged item ID:', draggedItemId);
+});
+
+$('.drop-todo').on('dragover', function(event) {
     event.preventDefault();
 });
 
-function getTask(draggedItemId) {
-    const droppedTask = tasks.find(task => task.id === draggedItemId);
-    if (droppedTask) {
-        console.log("Dropped Task:", droppedTask);
-    } else {
-        console.log("Task not found in tasks array");
-    }
-}
+$('.drop-progress').on('dragover', function(event) {
+    event.preventDefault();
+});
+
+$('.drop-done').on('dragover', function(event) {
+    event.preventDefault();
+});
 
 function addNewTask() {
     let newTask = document.createElement('li');
