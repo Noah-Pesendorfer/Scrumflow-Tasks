@@ -215,7 +215,6 @@ $( function() {
         drop: function( event, ui ) {
             console.log(this);
             $( this )
-                console.log(this)
                 .find( "ul" );
         }
     });
