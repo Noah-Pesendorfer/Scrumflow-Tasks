@@ -211,12 +211,11 @@ function loadDoneTask(task) {
 }
 
 $('.drop').on('drop', function(event) {
-    console.log('Dropped!');
+    console.log('Dropped!: ', this.title);
 });
 
 $('.drop').on('dragover', function(event) {
     event.preventDefault();
-    console.log("Dragover")
 });
 
 
