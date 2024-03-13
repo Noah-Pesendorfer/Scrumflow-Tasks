@@ -40,37 +40,6 @@ const doneList = document.querySelector('.Done-List');
 const projectTitle = document.querySelector('.project-title');
 
 // Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
-todoList.addEventListener('dragover', handleDragOver);
-todoList.addEventListener('drop', event=> handleDrop('In Progress', event));
-
-inprogressList.addEventListener('dragover', handleDragOver);
-inprogressList.addEventListener('drop', event=> handleDrop('In Progress', event));
-
-
-doneList.addEventListener('dragover', handleDragOver);
-doneList.addEventListener('drop', event=> handleDrop('In Progress', event));
-
-
-function handleDragOver(event) {
-    event.preventDefault();
-    taskId = event.target.id;
-}
-
-// Funktion, die aufgerufen wird, wenn ein Element in eine Liste gezogen wird
-function handleDrop(status, event) {
-    event.preventDefault();
-    console.log("Task ID: ", taskId);
-    const taskElement = document.getElementById(taskId);
-
-    console.log("Task Element: ", taskElement);
-
-    // Aktualisiere den Status des Tasks entsprechend der Ziel-Liste
-    //updateTaskStatus(taskId, status);
-    console.log(taskId, status);
-
-    // Verschiebe das Task-Element in die Ziel-Liste
-    doneList.appendChild(taskElement);
-}
 
 // Funktion, um den Status eines Tasks in der Datenbank zu aktualisieren
 async function updateTaskStatus(taskId, status) {
@@ -163,7 +132,7 @@ function loadTasksIntoHTML() {
 function loadToDoTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a class="draggable block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -190,7 +159,7 @@ function loadToDoTask(task) {
 function loadProgressTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a class="draggable block p-5 rounded-lg shadow bg-white" href="#">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -217,7 +186,7 @@ function loadProgressTask(task) {
 function loadDoneTask(task) {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a class="draggable block p-5 rounded-lg shadow bg-white" href="#" >\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">' + task.title + '</p>\n' +
         '                                    <span>\n' +
@@ -241,11 +210,23 @@ function loadDoneTask(task) {
     doneList.appendChild(newTask);
 }
 
+$( function() {
+    $( ".draggable" ).draggable();
+    $( ".droppable" ).droppable({
+        drop: function( event, ui ) {
+            $( this )
+                .addClass( "ui-state-highlight" )
+                .find( "p" )
+                .html( "Dropped!" );
+        }
+    });
+} );
+
 
 function addNewTask() {
     let newTask = document.createElement('li');
     newTask.classList.add('mt-3');
-    newTask.innerHTML = '<a id="' + task.id + '" class="block p-5 rounded-lg shadow bg-white" href="#" draggable="true" >\n' +
+    newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white draggable" href="#">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-sm w-48 font-medium leading-snug text-gray-900">Add discount code to\n' +
         '                                        checkout page</p>\n' +
