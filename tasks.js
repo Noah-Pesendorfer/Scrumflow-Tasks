@@ -38,16 +38,6 @@ const inprogressList = document.querySelector('.In-Progress-List');
 const doneList = document.querySelector('.Done-List');
 
 const projectTitle = document.querySelector('.project-title');
-
-// Füge Event-Listener für das Drag-and-Drop-Ereignis hinzu
-
-// Funktion, um den Status eines Tasks in der Datenbank zu aktualisieren
-async function updateTaskStatus(taskId, status) {
-    const taskRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", taskId);
-    await updateDoc(taskRef, { status: status });
-}
-
-
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User logged in with ID: ", user.uid);
