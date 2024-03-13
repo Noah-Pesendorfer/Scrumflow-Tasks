@@ -214,6 +214,11 @@ $('.drop').on('drop', function(event) {
     console.log('Dropped!');
 });
 
+$('.drop').on('dragover', function(event) {
+    event.preventDefault();
+    console.log("Dragover")
+});
+
 
 function addNewTask() {
     let newTask = document.createElement('li');
