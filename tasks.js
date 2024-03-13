@@ -222,9 +222,10 @@ $(document).on('dragstart', '.drag-item', function(event) {
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
     tasks.find(task => task.id === draggedItemId).status = "To-Do"
-    this.appendChild(task);
+    loadToDoTask(task);
     console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
@@ -232,9 +233,10 @@ $('.drop-todo').on('drop', function(event) {
 $('.drop-progress').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
     tasks.find(task => task.id === draggedItemId).status = "In Progress"
-    this.appendChild(task);
+    loadProgressTask(task);
     console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
@@ -242,9 +244,10 @@ $('.drop-progress').on('drop', function(event) {
 $('.drop-done').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
+    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
     tasks.find(task => task.id === draggedItemId).status = "Done";
-    this.appendChild(task);
+    loadDoneTask(task);
     console.log("Drop: ", this);
     console.log('Dropped! Dragged item ID:', draggedItemId);
 });
