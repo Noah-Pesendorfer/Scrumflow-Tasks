@@ -232,7 +232,7 @@ $('.drop').on('dragover', function(event) {
 });
 
 function getTask(draggedItemId) {
-    const droppedTask = tasks.find(task => task.id === droppedItemId);
+    const droppedTask = tasks.find(task => task.id === draggedItemId);
     if (droppedTask) {
         console.log("Dropped Task:", droppedTask);
     } else {
