@@ -225,35 +225,30 @@ function loadDoneTask(task) {
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
-    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    loadTasksOfProject();
     updateTaskStatus(task, "To-Do");
+    loadTasksOfProject();
 });
 
 $('.drop-progress').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
-    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    loadTasksOfProject();
     updateTaskStatus(task, "In Progress");
+    loadTasksOfProject();
 });
 
 $('.drop-done').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
-    document.getElementById(draggedItemId).remove();
     let task = tasks.find(task => task.id === draggedItemId);
-    loadTasksOfProject();
     updateTaskStatus(task, "Done");
+    loadTasksOfProject();
 });
 
 function updateTaskStatus(task, status){
-    tasks.find(task => task.id === task.id).status = status;
-
     const tasksRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id);
-    updateDoc(tasksRef, task)
+    updateDoc(tasksRef, {status: status})
         .then(() =>{
             console.log("Updated task: ", task);
         })
