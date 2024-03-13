@@ -226,6 +226,7 @@ $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     let task = tasks.find(task => task.id === draggedItemId);
+    console.log("Dropped in To-Do");
     updateTaskStatus(task, "To-Do");
     loadTasksOfProject();
 });
@@ -234,6 +235,7 @@ $('.drop-progress').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     let task = tasks.find(task => task.id === draggedItemId);
+    console.log("Dropped in In Progress");
     updateTaskStatus(task, "In Progress");
     loadTasksOfProject();
 });
@@ -242,6 +244,7 @@ $('.drop-done').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     let task = tasks.find(task => task.id === draggedItemId);
+    console.log("Dropped in Done");
     updateTaskStatus(task, "Done");
     loadTasksOfProject();
 });
