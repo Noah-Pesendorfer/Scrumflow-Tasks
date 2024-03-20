@@ -47,8 +47,6 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-document.querySelector('.add-task').addEventListener('click', () => addNewTask());
-
 function loadUserData() {
     const userRef = doc(db, "users", auth.currentUser.uid)
     getDoc(userRef)
