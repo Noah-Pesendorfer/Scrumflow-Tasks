@@ -245,7 +245,7 @@ function addProjectToFirestore(newTask) {
         return;
     }
 
-    const tasksRef = collection(db, "users", user.uid, "projects", currentProject.id, "tasks");
+    const tasksRef = collection(db, "users", user.uid, "projects", currentProject.uid, "tasks");
     addDoc(tasksRef, newTask).then(docRef => {
         newTask.id = docRef.id;
         tasks.push(newTask);
