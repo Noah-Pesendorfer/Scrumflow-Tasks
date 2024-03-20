@@ -223,6 +223,42 @@ function loadDoneTask(task) {
     });
 }
 
+const addBtn = document.querySelector('.submit-btn'),
+    titleEl = document.querySelector('.inputTitle'),
+    closeIcon = document.querySelector('.closeIcon');
+
+
+    addBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const newTask = {
+        title: titleEl.value,
+        status: "To-Do",
+        userID: auth.currentUser.uid
+    }
+    addProjectToFirestore(newTask);
+
+});
+
+function addProjectToFirestore(newTask) {
+    const user = auth.currentUser;
+    if (!user) {
+        alert("You must be logged in to add events.");
+        return;
+    }
+
+    const tasksRef = collection(db, "users", user.uid, "projects", currentProject.id, "tasks");
+    addDoc(tasksRef, newTask).then(docRef => {
+        newTask.id = docRef.id;
+        tasks.push(newTask);
+        closeIcon.click();
+    }).catch(error => {
+        console.error("Error adding event: ", error);
+    });
+
+
+}
+
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
