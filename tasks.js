@@ -260,8 +260,13 @@ function updateTaskStatus(task, status){
         })
 }
 
+
 $('.drop-todo').on('dragover', function(event) {
     event.preventDefault();
+
+    let newTask = document.createElement('li');
+    newTask.classList.add('mt-3', 'border');
+    todoList.appendChild(newTask);
 });
 
 $('.drop-progress').on('dragover', function(event) {
