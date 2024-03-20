@@ -228,7 +228,7 @@ $('.drop-todo').on('drop', function(event) {
     let draggedItemId = event.originalEvent.dataTransfer.getData("text/plain");
     let task = tasks.find(task => task.id === draggedItemId);
     updateTaskStatus(task, "To-Do");
-    onAuthStateChanged();
+    loadUserData();
 });
 
 $('.drop-progress').on('drop', function(event) {
@@ -237,7 +237,7 @@ $('.drop-progress').on('drop', function(event) {
     let task = tasks.find(task => task.id === draggedItemId);
     console.log("Dropped in In Progress");
     updateTaskStatus(task, "In Progress");
-    onAuthStateChanged();
+    loadUserData();
 });
 
 $('.drop-done').on('drop', function(event) {
@@ -246,7 +246,7 @@ $('.drop-done').on('drop', function(event) {
     let task = tasks.find(task => task.id === draggedItemId);
     console.log("Dropped in Done");
     updateTaskStatus(task, "Done");
-    onAuthStateChanged();
+    loadUserData();
 });
 
 function updateTaskStatus(task, status){
