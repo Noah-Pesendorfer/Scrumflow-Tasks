@@ -225,11 +225,6 @@ $('.modal-opener').click(function(){
     $('#default-modal').toggleClass('hidden');
 });
 
-addBox.addEventListener('click', () => {
-    modal.tog
-
-})
-
 /*
 const addBtn = document.querySelector('.submit-btn'),
     titleEl = document.querySelector('.inputTitle'),
