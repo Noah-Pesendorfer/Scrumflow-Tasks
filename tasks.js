@@ -220,7 +220,7 @@ function loadDoneTask(task) {
         event.originalEvent.dataTransfer.setData("text/plain", itemId);
     });
 }
-
+/*
 const addBtn = document.querySelector('.submit-btn'),
     titleEl = document.querySelector('.inputTitle'),
     closeIcon = document.querySelector('.closeIcon');
@@ -236,7 +236,7 @@ const addBtn = document.querySelector('.submit-btn'),
     }
     addProjectToFirestore(newTask);
 
-});
+});*/
 
 function addProjectToFirestore(newTask) {
     const user = auth.currentUser;
