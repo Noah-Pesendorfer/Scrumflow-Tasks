@@ -220,6 +220,16 @@ function loadDoneTask(task) {
         event.originalEvent.dataTransfer.setData("text/plain", itemId);
     });
 }
+
+$('.modal-opener').click(function(){
+    $('#default-modal').toggleClass('hidden');
+});
+
+addBox.addEventListener('click', () => {
+    modal.tog
+
+})
+
 /*
 const addBtn = document.querySelector('.submit-btn'),
     titleEl = document.querySelector('.inputTitle'),
@@ -256,22 +266,6 @@ function addProjectToFirestore(newTask) {
 
 
 }
-
-$(document).ready(function(){
-    // Modal anzeigen
-    $('[data-modal-toggle]').on('click', function(){
-        var target = $(this).data('modal-target');
-        $(target).removeClass('hidden');
-        $('body').addClass('overflow-hidden');
-    });
-
-    // Modal ausblenden
-    $('[data-modal-hide]').on('click', function(){
-        var target = $(this).data('modal-hide');
-        $(target).addClass('hidden');
-        $('body').removeClass('overflow-hidden');
-    });
-});
 
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
