@@ -230,11 +230,20 @@ $('.modal-submit').click(function(){
     $('#default-modal').toggleClass('hidden');
     $('#default-modal').toggleClass('backdrop-blur-sm')
 
+    var nameOfTask = $('name-of-task');
+    const newTask = {
+        title: nameOfTask.value,
+        status: "To-Do",
+        userID: auth.currentUser.uid
+    }
+    addProjectToFirestore(newTask);
 });
 
 $('.modal-closer').click(function(){
     $('#default-modal').toggleClass('hidden');
     $('#default-modal').toggleClass('backdrop-blur-sm')
+
+
 
 });
 
@@ -263,11 +272,10 @@ function addProjectToFirestore(newTask) {
         return;
     }
 
-    const tasksRef = collection(db, "users", user.uid, "projects", currentProject.uid, "tasks");
+    const tasksRef = collection(db, "users", user.uid, "projects", currentProject, "tasks");
     addDoc(tasksRef, newTask).then(docRef => {
         newTask.id = docRef.id;
         tasks.push(newTask);
-        closeIcon.click();
     }).catch(error => {
         console.error("Error adding event: ", error);
     });
