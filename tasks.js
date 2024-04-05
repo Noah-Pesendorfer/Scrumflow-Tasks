@@ -225,6 +225,11 @@ $('.modal-opener').click(function(){
     $('#default-modal').toggleClass('hidden');
 });
 
+$('.modal-submit').click(function(){
+    $('#default-modal').toggleClass('hidden');
+
+});
+
 /*
 const addBtn = document.querySelector('.submit-btn'),
     titleEl = document.querySelector('.inputTitle'),
