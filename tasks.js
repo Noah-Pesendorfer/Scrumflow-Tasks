@@ -230,9 +230,8 @@ $('.modal-submit').click(function(){
     $('#default-modal').toggleClass('hidden');
     $('#default-modal').toggleClass('backdrop-blur-sm')
 
-    var nameOfTask = $('name-of-task');
-    const newTask = {
-        title: nameOfTask.value,
+    var newTask = {
+        title: document.getElementById('name-of-task').value,
         status: "To-Do",
         userID: auth.currentUser.uid
     }
