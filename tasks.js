@@ -223,10 +223,12 @@ function loadDoneTask(task) {
 
 $('.modal-opener').click(function(){
     $('#default-modal').toggleClass('hidden');
+    $('#default-modal').toggleClass('backdrop-blur-sm')
 });
 
 $('.modal-submit').click(function(){
     $('#default-modal').toggleClass('hidden');
+    $('#default-modal').toggleClass('backdrop-blur-sm')
 
 });
 
