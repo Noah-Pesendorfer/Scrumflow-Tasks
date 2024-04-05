@@ -236,6 +236,7 @@ $('.modal-submit').click(function(){
         userID: auth.currentUser.uid
     }
     addProjectToFirestore(newTask);
+    loadTasksOfProject();
 });
 
 $('.modal-closer').click(function(){
