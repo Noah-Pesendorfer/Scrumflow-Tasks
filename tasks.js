@@ -232,6 +232,12 @@ $('.modal-submit').click(function(){
 
 });
 
+$('.modal-closer').click(function(){
+    $('#default-modal').toggleClass('hidden');
+    $('#default-modal').toggleClass('backdrop-blur-sm')
+
+});
+
 /*
 const addBtn = document.querySelector('.submit-btn'),
     titleEl = document.querySelector('.inputTitle'),
