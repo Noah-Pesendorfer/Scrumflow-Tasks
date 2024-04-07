@@ -31,6 +31,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const currentProject = "fWwjES7DQupXwr8Ymr3a";
 let tasks = [];
+let comments = [];
 let taskId;
 
 const todoList = document.querySelector('.To-Do-List');
@@ -85,6 +86,7 @@ function loadTasksOfProject() {
     inprogressList.innerHTML="";
     doneList.innerHTML="";
     tasks = [];
+    comments = [];
 
     const tasksRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks")
     getDocs(tasksRef)
@@ -149,6 +151,8 @@ function loadToDoTask(task) {
         '                            </a>';
     todoList.appendChild(newTask);
 
+    newTask.addEventListener('click', () => onTaskClick(task));
+
     $(document).on('dragstart', '.drag-item', function(event) {
         let itemId = $(this.parentNode).attr('id');
         event.originalEvent.dataTransfer.setData("text/plain", itemId);
@@ -182,6 +186,8 @@ function loadProgressTask(task) {
         '                            </a>';
     inprogressList.appendChild(newTask);
 
+    newTask.addEventListener('click', () => onTaskClick(task));
+
     $(document).on('dragstart', '.drag-item', function(event) {
         let itemId = $(this.parentNode).attr('id');
         event.originalEvent.dataTransfer.setData("text/plain", itemId);
@@ -214,6 +220,8 @@ function loadDoneTask(task) {
         '                                </div>\n' +
         '                            </a>';
     doneList.appendChild(newTask);
+
+    newTask.addEventListener('click', () => onTaskClick(task));
 
     $(document).on('dragstart', '.drag-item', function(event) {
         let itemId = $(this.parentNode).attr('id');
@@ -264,6 +272,62 @@ function addProjectToFirestore(newTask) {
         console.error("Error adding event: ", error);
     });
 }
+
+// ---
+
+// MODAL ZUM BEARBEITEN VON TASKS
+
+function onTaskClick(task) {
+    $('#edit-task-modal').toggleClass('hidden');
+    $('#edit-task-modal').toggleClass('backdrop-blur-sm')
+
+    document.getElementById('title-of-task').value = task.title;
+
+    const commentsRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id, "comments")
+    getDocs(commentsRef)
+        .then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                const commentData = doc.data();
+
+                const comment = {id: doc.id, ...commentData};
+
+                comments.push(comment);
+            });
+            loadCommentsIntoHTML();
+        })
+        .catch(error => {
+            console.error("Error loading Comments: ", error);
+        });
+}
+
+function loadCommentsIntoHTML() {
+    const commentsDiv = document.getElementById('comments-of-task');
+
+    comments.forEach(comment => {
+        commentsDiv.appendChild('<div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">\n' + comment.title + '</div>')
+    })
+}
+
+$('.edit-modal-submit').click(function(){
+    $('#edit-task-modal').toggleClass('hidden');
+    $('#edit-task-modal').toggleClass('backdrop-blur-sm')
+
+    var newTask = {
+        title: document.getElementById('title-of-task').value,
+        status: "To-Do",
+        userID: auth.currentUser.uid
+    }
+
+    document.getElementById('name-of-task').value = "";
+
+    addProjectToFirestore(newTask);
+    loadTasksOfProject();
+});
+
+$('.edit-modal-closer').click(function(){
+    $('#edit-task-modal').toggleClass('hidden');
+    $('#edit-task-modal').toggleClass('backdrop-blur-sm')
+});
 
 // ---
 
