@@ -32,7 +32,7 @@ const auth = getAuth(app);
 const currentProject = "mqXDggmNuqaQL308Hdkv";
 let tasks = [];
 let comments = [];
-let taskId;
+let currentTask;
 
 const todoList = document.querySelector('.To-Do-List');
 const inprogressList = document.querySelector('.In-Progress-List');
@@ -278,6 +278,8 @@ function addProjectToFirestore(newTask) {
 // MODAL ZUM BEARBEITEN VON TASKS
 
 function onTaskClick(task) {
+    currentTask = task;
+
     $('#edit-task-modal').toggleClass('hidden');
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
 
@@ -315,13 +317,18 @@ $('.edit-modal-submit').click(function(){
     $('#edit-task-modal').toggleClass('hidden');
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
 
-    var newTask = {
-        title: document.getElementById('title-of-task').value,
-        status: "To-Do",
-        userID: auth.currentUser.uid
+    if(currentTask) {
+        const taskRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", currentTask.id);
+        updateDoc(taskRef, {
+            title: document.getElementById('title-of-task').value,
+        })
+    }
+    else {
+        console.error("There was an error by updating Task: TaskID not found");
     }
 
     document.getElementById('name-of-task').value = "";
+    currentTask = "";
 
     loadTasksOfProject();
 });
