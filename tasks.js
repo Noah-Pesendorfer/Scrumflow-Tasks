@@ -221,6 +221,8 @@ function loadDoneTask(task) {
     });
 }
 
+// MODAL ZUM HINZUFÜGEN VON TASKS
+
 $('.modal-opener').click(function(){
     $('#default-modal').toggleClass('hidden');
     $('#default-modal').toggleClass('backdrop-blur-sm')
@@ -245,28 +247,7 @@ $('.modal-submit').click(function(){
 $('.modal-closer').click(function(){
     $('#default-modal').toggleClass('hidden');
     $('#default-modal').toggleClass('backdrop-blur-sm')
-
-
-
 });
-
-/*
-const addBtn = document.querySelector('.submit-btn'),
-    titleEl = document.querySelector('.inputTitle'),
-    closeIcon = document.querySelector('.closeIcon');
-
-
-    addBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const newTask = {
-        title: titleEl.value,
-        status: "To-Do",
-        userID: auth.currentUser.uid
-    }
-    addProjectToFirestore(newTask);
-
-});*/
 
 function addProjectToFirestore(newTask) {
     const user = auth.currentUser;
@@ -282,9 +263,9 @@ function addProjectToFirestore(newTask) {
     }).catch(error => {
         console.error("Error adding event: ", error);
     });
-
-
 }
+
+// ---
 
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
@@ -335,9 +316,7 @@ $('.drop-progress').on('dragover', function(event) {
 $('.drop-done').on('dragover', function(event) {
     event.preventDefault();
 });
-// SIDE MENU
 
-const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
 
 
