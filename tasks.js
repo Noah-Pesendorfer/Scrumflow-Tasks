@@ -29,7 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-const currentProject = "fWwjES7DQupXwr8Ymr3a";
+const currentProject = "mqXDggmNuqaQL308Hdkv";
 let tasks = [];
 let comments = [];
 let taskId;
