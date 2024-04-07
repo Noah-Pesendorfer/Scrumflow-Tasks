@@ -235,6 +235,9 @@ $('.modal-submit').click(function(){
         status: "To-Do",
         userID: auth.currentUser.uid
     }
+
+    document.getElementById('name-of-task').value = "";
+
     addProjectToFirestore(newTask);
     loadTasksOfProject();
 });
