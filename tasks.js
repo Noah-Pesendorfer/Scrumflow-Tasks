@@ -329,6 +329,7 @@ $('.edit-modal-submit').click(function(){
 
     document.getElementById('name-of-task').value = "";
     currentTask = "";
+    comments = [];
 
     loadTasksOfProject();
 });
