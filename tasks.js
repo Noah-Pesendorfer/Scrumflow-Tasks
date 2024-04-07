@@ -336,7 +336,12 @@ $('.edit-modal-submit').click(function(){
 
 $('.edit-modal-closer').click(function(){
     $('#edit-task-modal').toggleClass('hidden');
-    $('#edit-task-modal').toggleClass('backdrop-blur-sm')
+    $('#edit-task-modal').toggleClass('backdrop-blur-sm');
+
+    document.getElementById('name-of-task').value = "";
+    currentTask = "";
+    comments = [];
+
 });
 
 // ---
