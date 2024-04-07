@@ -304,7 +304,10 @@ function loadCommentsIntoHTML() {
     const commentsDiv = document.getElementById('comments-of-task');
 
     comments.forEach(comment => {
-        commentsDiv.appendChild('<div class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">\n' + comment.title + '</div>')
+        let commentDiv = document.createElement('div');
+        commentDiv.classList.add("bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm", "rounded-lg", "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "p-2.5");
+        commentDiv.innerHTML = comment.title;
+        commentsDiv.appendChild(commentDiv);
     })
 }
 
@@ -320,7 +323,6 @@ $('.edit-modal-submit').click(function(){
 
     document.getElementById('name-of-task').value = "";
 
-    addProjectToFirestore(newTask);
     loadTasksOfProject();
 });
 
