@@ -273,6 +273,8 @@ function onTaskClick(task) {
     currentTask = task;
     comments = [];
 
+    console.log("Comments after reset onTaskClick: ", comments);
+
     $('#edit-task-modal').toggleClass('hidden');
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
 
@@ -336,6 +338,9 @@ $('.edit-modal-closer').click(function(){
     document.getElementById('name-of-task').value = "";
     currentTask = "";
     comments = [];
+
+    console.log("Comments after reset on closer: ", comments);
+
 
 });
 
