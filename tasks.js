@@ -291,7 +291,7 @@ function onTaskClick(task) {
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
 
     document.getElementById('title-of-task').value = task.title;
-    document.getElementById('description-of-task').value = title.description;
+    document.getElementById('description-of-task').value = task.description;
 
     const commentsRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id, "comments")
     getDocs(commentsRef)
