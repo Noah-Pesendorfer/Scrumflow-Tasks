@@ -34,6 +34,8 @@ let tasks = [];
 let comments = [];
 let currentTask;
 
+const commentsDiv = document.getElementById('comments-of-task');
+
 const todoList = document.querySelector('.To-Do-List');
 const inprogressList = document.querySelector('.In-Progress-List');
 const doneList = document.querySelector('.Done-List');
@@ -273,6 +275,8 @@ function onTaskClick(task) {
     currentTask = task;
     comments = [];
 
+    commentsDiv.innerHTML = "";
+
     console.log("Comments after reset onTaskClick: ", comments);
 
     $('#edit-task-modal').toggleClass('hidden');
@@ -299,8 +303,6 @@ function onTaskClick(task) {
 }
 
 function loadCommentsIntoHTML() {
-    const commentsDiv = document.getElementById('comments-of-task');
-
     comments.forEach(comment => {
         let commentDiv = document.createElement('div');
         commentDiv.classList.add("bg-gray-50", "border", "border-gray-300", "text-gray-900", "text-sm", "rounded-lg", "focus:ring-blue-500", "focus:border-blue-500", "block", "w-full", "p-2.5");
@@ -326,7 +328,6 @@ $('.edit-modal-submit').click(function(){
 
     document.getElementById('name-of-task').value = "";
     currentTask = "";
-    comments = [];
 
     loadTasksOfProject();
 });
