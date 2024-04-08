@@ -29,7 +29,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-const currentProject = "mqXDggmNuqaQL308Hdkv";
+let currentProject;
 let tasks = [];
 let comments = [];
 let currentTask;
@@ -42,11 +42,18 @@ const projectTitle = document.querySelector('.project-title');
 onAuthStateChanged(auth, (user) => {
     if (user) {
         console.log("User logged in with ID: ", user.uid);
+        getProjektID();
         loadUserData();
     } else {
         console.log("No user is signed in.");
     }
 });
+
+function getProjektID() {
+    var urlParams = new URLSearchParams(window.location.search);
+    currentProject = urlParams.get('projektid');
+    console.log("ProjektID: ", currentProject);
+}
 
 function loadUserData() {
     const userRef = doc(db, "users", auth.currentUser.uid)
