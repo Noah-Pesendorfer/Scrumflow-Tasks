@@ -56,21 +56,6 @@ function getProjektID() {
 }
 
 function loadUserData() {
-    const userRef = doc(db, "users", auth.currentUser.uid)
-    getDoc(userRef)
-        .then(async docSnapshot => {
-            if (docSnapshot.exists()) {
-                const UserData = docSnapshot.data();
-
-                document.querySelector('.username').innerHTML = UserData.name;
-
-            } else {
-                console.log("Token-Dokument existiert nicht");
-            }
-        })
-        .catch(error => {
-            console.error("Fehler beim Laden des Token-Dokuments oder beim Aufrufen von GPT3: ", error);
-        });
     const projRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject)
     getDoc(projRef)
         .then(async docSnapshot => {
