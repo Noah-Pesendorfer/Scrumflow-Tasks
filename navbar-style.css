@@ -28,6 +28,11 @@ body{
     transition: var(--tran-05);
 }
 
+.modall {
+    justify-self: center;
+    align-self: center;
+}
+
 ::selection{
     background-color: var(--primary-color);
     color: #fff;

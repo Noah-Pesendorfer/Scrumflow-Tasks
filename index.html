@@ -15,10 +15,9 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="bg-gray-100">
-<div class="items-center justify-between">
     <!-- Modal Add Task -->
     <div id="default-modal" tabindex="-1"
-         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+         class="hidden modall overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow">
@@ -64,8 +63,8 @@
 
     <!-- Modal Edit Task -->
 
-    <dialog id="edit-task-modal" tabindex="-1"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="edit-task-modal" tabindex="-1"
+            class="hidden modall overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow">
@@ -124,9 +123,7 @@
                 </div>
             </div>
         </div>
-    </dialog>
-</div>
-
+    </div>
 <!-- Navbar -->
 <nav class="sidebar close">
     <header>
