@@ -271,6 +271,7 @@ function addProjectToFirestore(newTask) {
 
 function onTaskClick(task) {
     currentTask = task;
+    comments = [];
 
     $('#edit-task-modal').toggleClass('hidden');
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
