@@ -291,6 +291,7 @@ function onTaskClick(task) {
     $('#edit-task-modal').toggleClass('backdrop-blur-sm')
 
     document.getElementById('title-of-task').value = task.title;
+    document.getElementById('description-of-task').value = title.description;
 
     const commentsRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", task.id, "comments")
     getDocs(commentsRef)
@@ -328,6 +329,7 @@ $('.edit-modal-submit').click(function(){
         const taskRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", currentTask.id);
         updateDoc(taskRef, {
             title: document.getElementById('title-of-task').value,
+            description: document.getElementById('description-of-task').value
         })
     }
     else {
