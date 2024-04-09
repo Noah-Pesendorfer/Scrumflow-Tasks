@@ -64,6 +64,14 @@ function loadUserData() {
             if (docSnapshot.exists()) {
                 const ProjectData = docSnapshot.data();
 
+                currentProject = ProjectData;
+
+                if(!ProjectData.status || ProjectData.status == "Not Completed"){
+                    projCompleted.classList.remove('bg-green-500');
+                    projCompleted.classList.add('bg-red-500');
+                    projCompleted.innerHTML = "Not Completed"
+                }
+
                 projectTitle.innerHTML = ProjectData.title;
                 loadTasksOfProject();
             } else {
@@ -389,6 +397,23 @@ $('.comment-modal-closer').click(function() {
 });
 
 // ---
+
+$('.proj-completed').click(function (){
+    let projCompleted = document.querySelector('.proj-completed');
+    const projRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject)
+    if(projCompleted.classList.contains("bg-green-500")) {
+        updateDoc(projRef, {status: "Completed"})
+        projCompleted.classList.remove('bg-green-500');
+        projCompleted.classList.add('bg-red-500');
+        projCompleted.innerHTML = "Completed"
+    }
+    else if(projCompleted.classList.contains("bg-green-500")){
+        updateDoc(projRef, {status: "Not Completed"})
+        projCompleted.classList.add('bg-green-500');
+        projCompleted.classList.remove('bg-red-500');
+        projCompleted.innerHTML = "Not Completed"
+    }
+})
 
 $('.drop-todo').on('drop', function(event) {
     event.preventDefault();
