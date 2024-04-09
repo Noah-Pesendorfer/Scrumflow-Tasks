@@ -345,6 +345,49 @@ $('.edit-modal-closer').click(function(){
 
 });
 
+$('#add-comment').click(function (){
+    $('#add-comment-modal').toggleClass('hidden');
+    $('#add-comment-modal').toggleClass('backdrop-blur-sm');
+
+    document.getElementById('title-of-comment').value = "";
+
+});
+
+$('.comment-modal-submit').click(function(){
+    $('#add-comment-modal').toggleClass('hidden');
+    $('#add-comment-modal').toggleClass('backdrop-blur-sm')
+
+    var newComment = {
+        title: document.getElementById('title-of-comment').value,
+    }
+
+    if(currentTask) {
+        const commentsRef = collection(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", currentTask.id, "comments");
+        addDoc(commentsRef, newComment).then(docRef => {
+            newComment.id = docRef.id;
+            comments.push(newComment);
+            loadCommentsIntoHTML();
+        }).catch(error => {
+            console.error("Error adding event: ", error);
+        });
+    }
+    else {
+        console.error("There was an error by updating Task: TaskID not found");
+    }
+
+    document.getElementById('name-of-task').value = "";
+    currentTask = "";
+
+    loadTasksOfProject();
+});
+
+$('.comment-modal-closer').click(function() {
+    $('#add-comment-modal').toggleClass('hidden');
+    $('#add-comment-modal').toggleClass('backdrop-blur-sm');
+
+    document.getElementById('title-of-comment').value = "";
+});
+
 // ---
 
 $('.drop-todo').on('drop', function(event) {
