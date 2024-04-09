@@ -68,10 +68,11 @@ function loadUserData() {
 
                 currentProjectObj = ProjectData;
 
-                if(!ProjectData.status || ProjectData.status == "Not Completed"){
+                if(ProjectData.status == "Completed"){
+                    console.log("Completed")
                     projCompleted.classList.remove('bg-green-500');
                     projCompleted.classList.add('bg-red-500');
-                    projCompleted.innerHTML = "Not Completed"
+                    projCompleted.innerHTML = "Completed"
                 }
 
                 projectTitle.innerHTML = ProjectData.title;
