@@ -30,6 +30,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 let currentProject;
+let currentProjectObj;
 let tasks = [];
 let comments = [];
 let currentTask;
@@ -65,7 +66,7 @@ function loadUserData() {
             if (docSnapshot.exists()) {
                 const ProjectData = docSnapshot.data();
 
-                currentProject = ProjectData;
+                currentProjectObj = ProjectData;
 
                 if(!ProjectData.status || ProjectData.status == "Not Completed"){
                     projCompleted.classList.remove('bg-green-500');
