@@ -404,12 +404,14 @@ $('.comment-modal-closer').click(function() {
 $('.proj-completed').click(function (){
     const projRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject)
     if(projCompleted.classList.contains("bg-green-500")) {
+        console.log("Green")
         updateDoc(projRef, {status: "Completed"})
         projCompleted.classList.remove('bg-green-500');
         projCompleted.classList.add('bg-red-500');
         projCompleted.innerHTML = "Completed"
     }
-    else if(projCompleted.classList.contains("bg-green-500")){
+    else if(projCompleted.classList.contains("bg-red-500")){
+        console.log("Red")
         updateDoc(projRef, {status: "Not Completed"})
         projCompleted.classList.add('bg-green-500');
         projCompleted.classList.remove('bg-red-500');
