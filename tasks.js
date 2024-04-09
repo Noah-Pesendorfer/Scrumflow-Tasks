@@ -35,6 +35,7 @@ let comments = [];
 let currentTask;
 
 const commentsDiv = document.getElementById('comments-of-task');
+let projCompleted = document.querySelector('.proj-completed');
 
 const todoList = document.querySelector('.To-Do-List');
 const inprogressList = document.querySelector('.In-Progress-List');
@@ -399,7 +400,6 @@ $('.comment-modal-closer').click(function() {
 // ---
 
 $('.proj-completed').click(function (){
-    let projCompleted = document.querySelector('.proj-completed');
     const projRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject)
     if(projCompleted.classList.contains("bg-green-500")) {
         updateDoc(projRef, {status: "Completed"})
