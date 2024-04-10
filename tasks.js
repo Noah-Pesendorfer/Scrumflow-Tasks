@@ -136,11 +136,6 @@ function loadToDoTask(task) {
     newTask.innerHTML = '<a draggable="true" class="block p-5 rounded-lg shadow bg-white drag-item" href="#">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-base w-48 font-semibold leading-snug text-gray-900">' + task.title + '</p>\n' +
-        '                                    <span>\n' +
-        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
-        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
-        '                                            </div>' +
-        '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <time class="text-sm" datetime="2019-09-14">' + task.description + '</time>\n' +
@@ -171,11 +166,6 @@ function loadProgressTask(task) {
     newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-base w-48 font-semibold leading-snug text-gray-900">' + task.title + '</p>\n' +
-        '                                    <span>\n' +
-        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
-        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
-        '                                            </div>' +
-        '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <time class="text-sm" datetime="2019-09-14">' + task.description + '</time>\n' +
@@ -206,11 +196,6 @@ function loadDoneTask(task) {
     newTask.innerHTML = '<a class="block p-5 rounded-lg shadow bg-white drag-item" href="#" draggable="true">\n' +
         '                                <div class="flex justify-between">\n' +
         '                                    <p class="text-base w-48 font-semibold leading-snug text-gray-900">' + task.title + '</p>\n' +
-        '                                    <span>\n' +
-        '                                           <div class="relative inline-flex items-center justify-center w-9 h-9 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">\n' +
-        '                                                <span class="font-medium text-gray-600 dark:text-gray-300">NP</span>\n' +
-        '                                            </div>' +
-        '                                            </span>\n' +
         '                                </div>\n' +
         '                                <div class="flex justify-between items-baseline">\n' +
         '                                    <time class="text-sm" datetime="2019-09-14">' + task.description + '</time>\n' +
