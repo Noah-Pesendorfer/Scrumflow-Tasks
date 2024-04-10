@@ -393,8 +393,8 @@ $('.comment-modal-submit').click(function(){
 });
 
 $('.comment-modal-closer').click(function() {
-    $('#add-comment-modal').toggleClass('hidden');
-    $('#add-comment-modal').toggleClass('backdrop-blur-sm');
+    $('#edit-task-modal').toggleClass('hidden');
+    $('#edit-task-modal').toggleClass('backdrop-blur-sm');
 
     document.getElementById('title-of-comment').value = "";
 });
