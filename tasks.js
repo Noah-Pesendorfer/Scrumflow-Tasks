@@ -399,6 +399,20 @@ $('.comment-modal-closer').click(function() {
     document.getElementById('title-of-comment').value = "";
 });
 
+$('.delete-Task').click(function() {
+
+
+    const commentRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", currentTask.id);
+    deleteDoc(commentRef).then(docRef => {
+        $('#add-comment-modal').toggleClass('hidden');
+        $('#add-comment-modal').toggleClass('backdrop-blur-sm');
+
+        loadTasksOfProject();
+    }).catch(error => {
+        console.error("Error adding event: ", error);
+    });
+})
+
 // ---
 
 $('.proj-completed').click(function (){
