@@ -393,8 +393,8 @@ $('.comment-modal-submit').click(function(){
 });
 
 $('.comment-modal-closer').click(function() {
-    $('#edit-task-modal').toggleClass('hidden');
-    $('#edit-task-modal').toggleClass('backdrop-blur-sm');
+    $('#add-comment-modal').toggleClass('hidden');
+    $('#add-comment-modal').toggleClass('backdrop-blur-sm');
 
     document.getElementById('title-of-comment').value = "";
 });
@@ -404,8 +404,8 @@ $('.delete-Task').click(function() {
 
     const commentRef = doc(db, "users", auth.currentUser.uid, "projects", currentProject, "tasks", currentTask.id);
     deleteDoc(commentRef).then(docRef => {
-        $('#add-comment-modal').toggleClass('hidden');
-        $('#add-comment-modal').toggleClass('backdrop-blur-sm');
+        $('#edit-task-modal').toggleClass('hidden');
+        $('#edit-task-modal').toggleClass('backdrop-blur-sm');
 
         loadTasksOfProject();
     }).catch(error => {
